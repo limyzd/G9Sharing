@@ -9,6 +9,7 @@ g9share <- function (startdate, enddate) {
   diff<- NULL
   lengthrep <- NULL
   names2 <- NULL
+  endspace <- NULL
   df <- NULL
   
   ##setting up dates sequence
@@ -32,8 +33,10 @@ g9share <- function (startdate, enddate) {
     names2 <- c(begin, rep_len(names, length.out=(lengthrep)))
   }
   
+  endspace <- rep("",length.out=(7-((length(names2)+length(beginspace)) %% 7)))
+  
   ## formatting
-  df<- matrix(c(beginspace,paste(days,names2)),ncol=7,byrow=TRUE)
+  df<- matrix(c(beginspace,paste(days,names2),endspace),ncol=7,byrow=TRUE)
   colnames(df) <- c("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
   
   print(df)
